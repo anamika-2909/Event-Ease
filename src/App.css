@@ -1,0 +1,202 @@
+/* Navbar */
+.nav-link {
+    transition: .3s;
+}
+
+.nav-link:hover {
+    color: #2563eb !important;
+}
+
+/* Hero */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+    background: #f8faff;
+}
+
+/*search section */
+.search-section {
+    margin-top: -70px;
+    position: relative;
+    z-index: 10;
+}
+
+.search-box {
+    /* background:#fff; */
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+}
+
+.search-btn {
+    height: 48px;
+    border-radius: 10px;
+}
+
+/* categories */
+.category-card{
+    border-radius:20px;
+    transition:0.3s ease;
+}
+
+.category-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.1)!important;
+}
+
+/* FeaturedVendors*/
+.vendor-card{
+    border-radius:20px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.vendor-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,.15)!important;
+}
+
+.vendor-placeholder{
+    height:220px;
+    background:#f3f4f6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    font-weight:bold;
+}
+
+/*WhyChooseus*/
+.why-card{
+    border-radius:20px;
+    transition:0.3s ease;
+}
+
+.why-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.15)!important;
+}
+
+/*services*/
+.service-card{
+    border-radius:20px;
+    transition:.3s;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,.15)!important;
+}
+
+/*Testimonials*/
+.testimonial-card{
+    border-radius:20px;
+    transition:.3s;
+}
+
+.testimonial-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,.15)!important;
+}
+/*gallery*/
+.gallery-card{
+    overflow:hidden;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.gallery-placeholder{
+    height:250px;
+    background:#f4f4f4;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition:.3s;
+}
+
+.gallery-placeholder:hover{
+    background:#0d6efd;
+    color:white;
+    transform:scale(1.03);
+}
+
+/*Becomevendor*/
+.vendor-section{
+    background:#0d6efd;
+}
+
+.vendor-box{
+    padding:70px 30px;
+}
+
+.vendor-box h2{
+    font-size:45px;
+}
+
+.vendor-box p{
+    max-width:700px;
+    margin:auto;
+    font-size:18px;
+}
+
+/* register*/
+.register-section{
+    background:#f8f9fa;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+}
+.register-card{
+    border-radius:20px;
+}
+.register-card .btn{
+    height:48px;
+    border-radius:10px;
+}
+
+/*Login*/
+
+.login-left{
+    background:linear-gradient(135deg,#2563eb,#4f8dfd);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:50px;
+}
+
+.login-logo{
+    width:90px;
+}
+
+.feature-list{
+    margin-top:20px;
+    width:100%;
+}
+
+.feature-list p{
+    font-size:18px;
+    margin:12px 0;
+}
+
+/*ForgotPassword*/
+.forgot-section{
+    background:#f5f7fb;
+}
+
+.forgot-card{
+    border-radius:20px;
+}
+
+.forgot-card .form-control{
+    height:50px;
+}
+
+.forgot-card .input-group-text{
+    background:white;
+}
