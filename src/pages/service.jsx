@@ -5,6 +5,7 @@ import {
 } from "react-icons/fa";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Services from "../components/Services";
+import Testimonials from "../components/Testimonials";
 
 const Servicespage = () => {
     const services = [
@@ -66,6 +67,23 @@ const Servicespage = () => {
                         <h5>Celebrate</h5>
                         <p>Enjoy your special day without stress.</p>
                     </div>
+                </div>
+            </section>
+            <Testimonials />
+
+            <section className="container-fluid bg-primary text-white py-5">
+                <div className="container text-center">
+                    <h2 className="fw-bold mb-3">
+                        Ready to Plan Your Dream Event?
+                    </h2>
+
+                    <p className="mb-4">
+                        Let EventEase turn your special moments into unforgettable memories.
+                    </p>
+
+                    <button className="btn btn-light btn-lg px-4">
+                        Book Now
+                    </button>
                 </div>
             </section>
         </>
