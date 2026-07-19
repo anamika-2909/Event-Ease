@@ -18,6 +18,18 @@ const Event = () => {
                     </button>
                 </div>
             </section>
+            <div className="container py-5">
+                <div className="text-center mb-5">
+                    <h2 className="fw-bold">Explore Our Events</h2>
+                    <p className="text-muted">
+                        Discover the perfect event for every special moment.
+                    </p>
+                </div>
+
+                <div className="row g-4">
+                   <gallery />
+                </div>
+            </div>
         </>
     )
 }
