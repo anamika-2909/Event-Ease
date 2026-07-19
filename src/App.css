@@ -227,3 +227,16 @@
 .services-content p{
     font-size:22px;
 }
+.service-card {
+  transition: 0.3s;
+  border-radius: 15px;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+}
+
+.service-icon {
+  font-size: 45px;
+  color: #0d6efd;
+}
