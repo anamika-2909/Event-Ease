@@ -1,4 +1,5 @@
 import React from 'react'
+import Gallery from '../components/Gallery'
 
 const Event = () => {
     return (
@@ -27,7 +28,7 @@ const Event = () => {
                 </div>
 
                 <div className="row g-4">
-                   <gallery />
+                   <Gallery/>
                 </div>
             </div>
         </>
