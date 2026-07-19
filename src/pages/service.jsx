@@ -1,19 +1,67 @@
 import React from "react";
+import {
+    FaBirthdayCake, FaHeart, FaBuilding, FaBaby, FaCamera, FaUtensils, FaGlassCheers, FaRing,
+} from "react-icons/fa";
 
 const Services = () => {
+    const services = [
+        { icon: <FaBirthdayCake />, title: "Birthday Party" },
+        { icon: <FaRing />, title: "Wedding Planning" },
+        { icon: <FaBuilding />, title: "Corporate Event" },
+        { icon: <FaBaby />, title: "Baby Shower" },
+        { icon: <FaHeart />, title: "Engagement" },
+        { icon: <FaCamera />, title: "Photography" },
+        { icon: <FaUtensils />, title: "Catering" },
+        { icon: <FaGlassCheers />, title: "Anniversary" },
+    ];
     return (
-        <section className="services-hero d-flex align-items-center justify-content-center text-center">
-            <div className="container text-white">
-                <h1 className="display-4 fw-bold">Our Event Services</h1>
-                <p className="lead">
-                    We provide complete event planning services to make your celebration
-                    unforgettable.
-                </p>
-                <button className="btn btn-primary btn-lg mt-4">
-                    Explore Services
-                </button>
-            </div>
-        </section>
+        <>
+            <section className="services-hero d-flex align-items-center justify-content-center text-center">
+                <div className="container text-white">
+                    <h1 className="display-4 fw-bold">Our Event Services</h1>
+                    <p className="lead">
+                        We provide complete event planning services to make your celebration
+                        unforgettable.
+                    </p>
+                    <button className="btn btn-primary btn-lg mt-4">
+                        Explore Services
+                    </button>
+                </div>
+            </section>
+
+            <section className="container py-5">
+                <div className="text-center mb-5">
+                    <h2 className="fw-bold">Our Services</h2>
+                    <p className="text-muted">
+                        Choose the perfect service for your special occasion.
+                    </p>
+                </div>
+
+                <div className="row g-4">
+                    {services.map((service, index) => (
+                        <div className="col-md-3 col-sm-6" key={index}>
+                            <div className="card h-100 text-center shadow-sm service-card border-0">
+                                <div className="card-body">
+                                    <div className="service-icon mb-3">
+                                        {service.icon}
+                                    </div>
+
+                                    <h5>{service.title}</h5>
+
+                                    <p className="text-muted">
+                                        Professional planning and management for your event.
+                                    </p>
+
+                                    <button className="btn btn-primary">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </>
     );
 };
 
