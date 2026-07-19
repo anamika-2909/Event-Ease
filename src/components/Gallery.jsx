@@ -1,4 +1,3 @@
-import { FaImage } from "react-icons/fa";
 import wedding from "../assets/images/wedding.jpg";
 import birthday from "../assets/images/Birthday.jpg";
 import decoration from "../assets/images/Decoration.jpg";
@@ -9,67 +8,63 @@ import anniversary from "../assets/images/Annivarsary.jpg";
 const gallery = [
   {
     title: "Wedding",
-   Image: wedding,
+    Image: wedding,
   },
   {
     title: "Birthday",
-   Image: birthday,
-
+    Image: birthday,
   },
   {
     title: "Decoration",
-     Image: decoration,
+    Image: decoration,
   },
   {
     title: "Corporate",
-     Image: corporate,
+    Image: corporate,
   },
-   {
+  {
     title: "Baby Shower",
-     Image: babyShower,
+    Image: babyShower,
   },
-   {
-    title:  "Anniversary",
+  {
+    title: "Anniversary",
     Image: anniversary,
   },
 ];
 
-const Gallery = () => {
+const Gallery = ({
+  title = "Event Gallery",
+  subtitle = "Take a look at some of our memorable events.",
+}) => {
   return (
     <section className="py-5">
       <div className="container">
 
-        <div className="text-center mb-5">
-          <h2 className="fw-bold">Event Gallery</h2>
-          <p className="text-muted">
-            Take a look at some of our memorable events.
-          </p>
-        </div>
+        {(title || subtitle) && (
+          <div className="text-center mb-5">
+            {title && <h2 className="fw-bold">{title}</h2>}
+            {subtitle && (
+              <p className="text-muted">{subtitle}</p>
+            )}
+          </div>
+        )}
 
         <div className="row g-4">
-
           {gallery.map((item, index) => (
             <div className="col-md-4" key={index}>
-
               <div className="gallery-card">
+                <img
+                  src={item.Image}
+                  alt={item.title}
+                  className="img-fluid rounded"
+                />
 
-                <div className="gallery-placeholder">
-
-                  <img className="image-fluid" src={item.Image} alt="image" />
-                  {/* <FaImage size={45} /> */}
-
-                  <h5 className="mt-3">
-                    {item.title}
-                  </h5>
-                  
-
-                </div>
-
+                <h5 className="text-center mt-3">
+                  {item.title}
+                </h5>
               </div>
-
             </div>
           ))}
-
         </div>
 
       </div>
