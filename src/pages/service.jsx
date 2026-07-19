@@ -1,7 +1,7 @@
 import React from "react";
 import {
     FaBirthdayCake, FaHeart, FaBuilding, FaBaby, FaCamera, FaUtensils, FaGlassCheers, FaRing,
-    FaSearch, FaUserTie, FaCalendarCheck, FaGlassCheers
+    FaSearch, FaUserTie, FaCalendarCheck
 } from "react-icons/fa";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Services from "../components/Services";
