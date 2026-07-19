@@ -33,7 +33,7 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="#">
+              <Link className="nav-link fw-semibold" to="/event">
                 Events
               </Link>
             </li>

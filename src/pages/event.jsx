@@ -1,6 +1,6 @@
 import React from 'react'
 
-const event = () => {
+const Event = () => {
     return (
         <>
             <section className="event-hero d-flex align-items-center text-center">
@@ -22,4 +22,4 @@ const event = () => {
     )
 }
 
-export default event
+export default Event
