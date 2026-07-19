@@ -8,7 +8,7 @@ import Layout from "./Layout/layout";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
-import Services from "./pages/service";
+import Servicespage from "./pages/service";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
-          <Route path="/service" element={<Services />} />
+          <Route path="/service" element={<Servicespage />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
