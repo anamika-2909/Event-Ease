@@ -62,9 +62,6 @@ const Gallery = ({
                 <h5 className="fw-bold text-center mt-3">
                   {item.title}
                 </h5>
-                <p className="text-muted text-center">
-                  Make your special day unforgettable.
-                </p>
               </div>
             </div>
           ))}
