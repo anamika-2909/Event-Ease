@@ -1,6 +1,7 @@
 import React from "react";
 import {
     FaBirthdayCake, FaHeart, FaBuilding, FaBaby, FaCamera, FaUtensils, FaGlassCheers, FaRing,
+    FaSearch, FaUserTie, FaCalendarCheck, FaGlassCheers
 } from "react-icons/fa";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Services from "../components/Services";
@@ -30,8 +31,43 @@ const Servicespage = () => {
                     </button>
                 </div>
             </section>
-             <Services/>
-            <WhyChooseUs/>
+            <Services />
+            <WhyChooseUs />
+
+            <section className="container py-5">
+                <div className="text-center mb-5">
+                    <h2 className="fw-bold">How It Works</h2>
+                    <p className="text-muted">
+                        Plan your event in just four simple steps.
+                    </p>
+                </div>
+
+                <div className="row text-center">
+                    <div className="col-md-3">
+                        <FaSearch size={40} className="text-primary mb-3" />
+                        <h5>Choose Service</h5>
+                        <p>Select the event service you need.</p>
+                    </div>
+
+                    <div className="col-md-3">
+                        <FaUserTie size={40} className="text-primary mb-3" />
+                        <h5>Select Vendor</h5>
+                        <p>Browse and choose a trusted vendor.</p>
+                    </div>
+
+                    <div className="col-md-3">
+                        <FaCalendarCheck size={40} className="text-primary mb-3" />
+                        <h5>Book Event</h5>
+                        <p>Confirm your booking in a few clicks.</p>
+                    </div>
+
+                    <div className="col-md-3">
+                        <FaGlassCheers size={40} className="text-primary mb-3" />
+                        <h5>Celebrate</h5>
+                        <p>Enjoy your special day without stress.</p>
+                    </div>
+                </div>
+            </section>
         </>
     );
 };
