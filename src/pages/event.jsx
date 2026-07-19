@@ -28,10 +28,7 @@ const Event = () => {
                 </div>
 
                 <div className="row g-4">
-                    <Gallery
-                        title="Explore Our Events"
-                        subtitle="Discover the perfect event for every special moment."
-                    />
+                    <Gallery />
                 </div>
             </div>
         </>
