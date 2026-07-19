@@ -2,6 +2,7 @@ import React from "react";
 import {
     FaBirthdayCake, FaHeart, FaBuilding, FaBaby, FaCamera, FaUtensils, FaGlassCheers, FaRing,
 } from "react-icons/fa";
+import WhyChooseUs from "../components/WhyChooseUs";
 
 const Services = () => {
     const services = [
@@ -61,6 +62,7 @@ const Services = () => {
                     ))}
                 </div>
             </section>
+            <WhyChooseUs/>
         </>
     );
 };
