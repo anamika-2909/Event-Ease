@@ -1,6 +1,43 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import axiosInstance from "../service/axiosInstance";
 
 const Register = () => {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
+    role: "customer",
+  });
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (formData.password !== formData.confirmPassword) {
+    return alert("Passwords do not match");
+  }
+
+  try {
+    const res = await axiosInstance.post("/api/register", {
+      fullName: formData.name,
+      email: formData.email,
+      password: formData.password,
+      role: formData.role,
+    });
+
+    alert(res.data.message);
+
+    navigate("/login");
+  } catch (err) {
+    console.log(err.response?.data);
+
+    alert(err.response?.data?.message || "Registration Failed");
+  }
+};
   return (
     <section className="register-section py-5">
       <div className="container">
@@ -18,7 +55,7 @@ const Register = () => {
                 Join EventEase Today
               </p>
 
-              <form>
+              <form onSubmit={handleSubmit}>
 
                 <div className="mb-3">
                   <label className="form-label">Full Name</label>
@@ -26,6 +63,7 @@ const Register = () => {
                     type="text"
                     className="form-control"
                     placeholder="Enter your full name"
+                    onChange={(e) => { setform({ ...form, name: e.target.value }) }}
                   />
                 </div>
 
@@ -35,6 +73,7 @@ const Register = () => {
                     type="email"
                     className="form-control"
                     placeholder="Enter your email"
+                    onChange={(e) => { setform({ ...form, email: e.target.value }) }}
                   />
                 </div>
 
@@ -44,6 +83,7 @@ const Register = () => {
                     type="tel"
                     className="form-control"
                     placeholder="Enter your phone number"
+                    onChange={(e) => { setform({ ...form, phone: e.target.value }) }}
                   />
                 </div>
 
@@ -53,6 +93,7 @@ const Register = () => {
                     type="password"
                     className="form-control"
                     placeholder="Enter password"
+                    onChange={(e) => { setform({ ...form, password: e.target.value }) }}
                   />
                 </div>
 
@@ -62,6 +103,7 @@ const Register = () => {
                     type="password"
                     className="form-control"
                     placeholder="Confirm password"
+                    onChange={(e) => { setform({ ...form, confirmPassword: e.target.value }) }}
                   />
                 </div>
 
@@ -77,6 +119,7 @@ const Register = () => {
                       name="role"
                       id="customer"
                       defaultChecked
+                      onChange={(e) => { setform({ ...form, role: e.target.value }) }}
                     />
                     <label
                       className="form-check-label"
@@ -117,7 +160,8 @@ const Register = () => {
                   </label>
                 </div>
 
-                <button className="btn btn-primary w-100">
+                <button className="btn btn-primary w-100"
+                type="submit">
                   Create Account
                 </button>
 
