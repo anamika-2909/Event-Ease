@@ -13,6 +13,8 @@ import Event from "./pages/event";
 import Vendor from "./Vendor/vendor";
 import Dashboard from "./admin/AdminDashboard";
 import AdminLayout from "./Layout/Adminlayout";
+import AddCategory from "./admin/category/add-category";
+import ManageCategory from "./admin/category/manage-category";
 
 const App = () => {
   return (
@@ -33,6 +35,8 @@ const App = () => {
   {/* Admin Layout */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
+          <Route path="add-category" element={<AddCategory />} />
+        <Route path="manage-category" element={<ManageCategory />} />
         </Route>
 
       </Routes>
