@@ -1,6 +1,6 @@
 import React from 'react'
 
-const vendor = () => {
+const Vendor = () => {
     return (
         <>
             <section className="services-hero d-flex align-items-center">
@@ -44,4 +44,4 @@ const vendor = () => {
     )
 }
 
-export default vendor
+export default Vendor
