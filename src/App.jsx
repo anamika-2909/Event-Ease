@@ -11,6 +11,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Servicespage from "./pages/service";
 import Event from "./pages/event";
 import Vendor from "./Vendor/vendor";
+import Dashboard from "./admin/AdminDashboard";
+import AdminLayout from "./Layout/Adminlayout";
 
 const App = () => {
   return (
@@ -21,8 +23,8 @@ const App = () => {
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/service" element={<Servicespage />} />
-          <Route path="/event" element={<Event/>} />
-           <Route path="/vendor" element={<Vendor />} />
+          <Route path="/event" element={<Event />} />
+          <Route path="/vendor" element={<Vendor />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
@@ -30,6 +32,21 @@ const App = () => {
 
 
       </Routes>
+
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Dashboard />} />
+
+        {/* <Route path="add-category" element={<AddCategory />} />
+        <Route path="manage-category" element={<ManageCategory />} />
+        <Route path="add-event" element={<AddEvent />} />
+        <Route path="manage-event" element={<ManageEvent />} />
+        <Route path="add-service" element={<AddService />} />
+        <Route path="manage-service" element={<ManageService />} />
+        <Route path="users" element={<ManageUsers />} />
+        <Route path="vendors" element={<ManageVendors />} />
+        <Route path="bookings" element={<ManageBookings />} />
+        <Route path="reviews" element={<ManageReviews />} /> */}
+      </Route>
 
     </BrowserRouter>
   );
