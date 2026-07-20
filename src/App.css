@@ -241,3 +241,12 @@
     background-size: cover;
     background-position: center;
 }
+/*vendor*/
+.vendor-hero {
+    min-height: 90vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)),
+        url("../src/assets/images/vendorBanner.jpg");
+    background-size: cover;
+    background-position: center;
+}
