@@ -6,7 +6,7 @@ import axiosInstance from "../service/axiosInstance";
 const Register = () => {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
