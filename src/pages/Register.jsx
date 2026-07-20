@@ -17,16 +17,16 @@ const Register = () => {
  const handleSubmit = async (e) => {
   e.preventDefault();
 
-  if (formData.password !== formData.confirmPassword) {
+  if (form.password !== form.confirmPassword) {
     return alert("Passwords do not match");
   }
 
   try {
     const res = await axiosInstance.post("/api/register", {
-      fullName: formData.name,
-      email: formData.email,
-      password: formData.password,
-      role: formData.role,
+      fullName: form.name,
+      email: form.email,
+      password: form.password,
+      role: form.role,
     });
 
     alert(res.data.message);
