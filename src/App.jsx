@@ -15,8 +15,9 @@ import Dashboard from "./admin/AdminDashboard";
 import AdminLayout from "./Layout/Adminlayout";
 import AddCategory from "./admin/category/add-category";
 import ManageCategory from "./admin/category/manage-category";
-import EventAdd from "./admin/Events/event-Add";
-import EventManage from "./admin/Events/Event-manage";
+import AddEvent from "./admin/Events/event-Add";
+import ManageEvent from "./admin/Events/Event-manage";
+
 
 const App = () => {
   return (
@@ -39,8 +40,8 @@ const App = () => {
           <Route index element={<Dashboard />} />
           <Route path="add-category" element={<AddCategory />} />
           <Route path="manage-category" element={<ManageCategory />} />
-          <Route path="add-event" element={<EventAdd />} />
-          <Route path="manage-event" element={<EventManage />} />
+          <Route path="add-event" element={<AddEvent />} />
+          <Route path="manage-event" element={<ManageEvent />} />
         </Route>
 
       </Routes>
