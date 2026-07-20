@@ -1,22 +1,15 @@
 import { Outlet } from "react-router-dom";
-// import AdminSidebar from "../components/AdminSidebar";
-// import AdminNavbar from "../components/AdminNavbar";
+import AdminSidebar from "../admin/AdminSidebar";
+import AdminNavbar from "../admin/AdminNavbar";
+
 
 
 const AdminLayout = () => {
   return (
     <div className="admin-layout d-flex">
-
-      {/* Sidebar */}
-      {/* <AdminSidebar /> */}
-
-      {/* Main Content */}
+      <AdminSidebar />      
       <div className="admin-main flex-grow-1">
-
-        {/* Top Navbar */}
-        {/* <AdminNavbar /> */}
-
-        {/* Page Content */}
+        <AdminNavbar />
         <div className="admin-content p-4">
           <Outlet />
         </div>
