@@ -32,11 +32,13 @@ const App = () => {
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
         </Route>
 
-  {/* Admin Layout */}
+        {/* Admin Layout */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="add-category" element={<AddCategory />} />
-        <Route path="manage-category" element={<ManageCategory />} />
+          <Route path="manage-category" element={<ManageCategory />} />
+          <Route path="add-event" element={<AddEvent />} />
+          <Route path="manage-event" element={<ManageEvent />} />
         </Route>
 
       </Routes>
@@ -54,9 +56,9 @@ const App = () => {
         <Route path="vendors" element={<ManageVendors />} />
         <Route path="bookings" element={<ManageBookings />} />
         <Route path="reviews" element={<ManageReviews />} /> */}
-      {/* </Routes> */} 
+      {/* </Routes> */}
 
-     
+
 
     </BrowserRouter>
   );
