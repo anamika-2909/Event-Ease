@@ -17,12 +17,6 @@ const Login = () => {
 
                                 <div className="col-lg-6 login-left text-white">
 
-                                    {/* <img
-                                        src={logo}
-                                        alt="logo"
-                                        className="login-logo"
-                                    /> */}
-
                                     <h2 className="fw-bold mt-3">
                                         Welcome Back
                                     </h2>
@@ -42,13 +36,6 @@ const Login = () => {
                                         <p>✔ Trusted Vendors</p>
 
                                     </div>
-
-                                    {/* <img
-                                        src={eventImage}
-                                        className="img-fluid mt-4"
-                                        alt=""
-                                    /> */}
-
                                 </div>
                                 {/* Right Side */}
                                 <div className="col-lg-6">
@@ -69,7 +56,7 @@ const Login = () => {
                                                     <input
                                                         type="email"
                                                         className="form-control"
-                                                        placeholder="Enter Email"/>
+                                                        placeholder="Enter Email" />
                                                 </div>
                                             </div>
                                             {/* Password */}
