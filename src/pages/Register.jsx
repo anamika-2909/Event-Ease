@@ -63,7 +63,7 @@ const Register = () => {
                     type="text"
                     className="form-control"
                     placeholder="Enter your full name"
-                    onChange={(e) => { setform({ ...form, name: e.target.value }) }}
+                    onChange={(e) => { setForm({ ...form, name: e.target.value }) }}
                   />
                 </div>
 
@@ -73,7 +73,7 @@ const Register = () => {
                     type="email"
                     className="form-control"
                     placeholder="Enter your email"
-                    onChange={(e) => { setform({ ...form, email: e.target.value }) }}
+                    onChange={(e) => { setForm({ ...form, email: e.target.value }) }}
                   />
                 </div>
 
@@ -83,7 +83,7 @@ const Register = () => {
                     type="tel"
                     className="form-control"
                     placeholder="Enter your phone number"
-                    onChange={(e) => { setform({ ...form, phone: e.target.value }) }}
+                    onChange={(e) => { setForm({ ...form, phone: e.target.value }) }}
                   />
                 </div>
 
@@ -93,7 +93,7 @@ const Register = () => {
                     type="password"
                     className="form-control"
                     placeholder="Enter password"
-                    onChange={(e) => { setform({ ...form, password: e.target.value }) }}
+                    onChange={(e) => { setForm({ ...form, password: e.target.value }) }}
                   />
                 </div>
 
@@ -103,7 +103,7 @@ const Register = () => {
                     type="password"
                     className="form-control"
                     placeholder="Confirm password"
-                    onChange={(e) => { setform({ ...form, confirmPassword: e.target.value }) }}
+                    onChange={(e) => { setForm({ ...form, confirmPassword: e.target.value }) }}
                   />
                 </div>
 
@@ -119,7 +119,7 @@ const Register = () => {
                       name="role"
                       id="customer"
                       defaultChecked
-                      onChange={(e) => { setform({ ...form, role: e.target.value }) }}
+                      onChange={(e) => { setForm({ ...form, role: e.target.value }) }}
                     />
                     <label
                       className="form-check-label"
