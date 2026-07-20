@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "../service/axiosInstance";
 
 const Register = () => {
@@ -14,30 +14,30 @@ const Register = () => {
     confirmPassword: "",
     role: "customer",
   });
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (form.password !== form.confirmPassword) {
-    return alert("Passwords do not match");
-  }
+    if (form.password !== form.confirmPassword) {
+      return alert("Passwords do not match");
+    }
 
-  try {
-    const res = await axiosInstance.post("/api/register", {
-      fullName: form.name,
-      email: form.email,
-      password: form.password,
-      role: form.role,
-    });
+    try {
+      const res = await axiosInstance.post("/auth/register", {
+        fullName: form.name,
+        email: form.email,
+        password: form.password,
+        role: form.role,
+      });
 
-    alert(res.data.message);
+      alert(res.data.message);
 
-    navigate("/login");
-  } catch (err) {
-    console.log(err.response?.data);
+      navigate("/auth/login");
+    } catch (err) {
+      console.log(err.response?.data);
 
-    alert(err.response?.data?.message || "Registration Failed");
-  }
-};
+      alert(err.response?.data?.message || "Registration Failed");
+    }
+  };
   return (
     <section className="register-section py-5">
       <div className="container">
@@ -161,7 +161,7 @@ const Register = () => {
                 </div>
 
                 <button className="btn btn-primary w-100"
-                type="submit">
+                  type="submit">
                   Create Account
                 </button>
 
