@@ -30,6 +30,10 @@ const App = () => {
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
         </Route>
 
+  {/* Admin Layout */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
+        </Route>
 
       </Routes>
 
@@ -48,10 +52,7 @@ const App = () => {
         <Route path="reviews" element={<ManageReviews />} /> */}
       {/* </Routes> */} 
 
-       {/* Admin Layout */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Dashboard />} />
-        </Route>
+     
 
     </BrowserRouter>
   );
