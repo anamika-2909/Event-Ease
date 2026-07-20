@@ -33,7 +33,7 @@ const App = () => {
 
       </Routes>
 
-      <Route path="/admin" element={<AdminLayout />}>
+      <Routes path="/admin" element={<AdminLayout />}>
         <Route index element={<Dashboard />} />
 
         {/* <Route path="add-category" element={<AddCategory />} />
@@ -46,7 +46,7 @@ const App = () => {
         <Route path="vendors" element={<ManageVendors />} />
         <Route path="bookings" element={<ManageBookings />} />
         <Route path="reviews" element={<ManageReviews />} /> */}
-      </Route>
+      </Routes>
 
     </BrowserRouter>
   );
