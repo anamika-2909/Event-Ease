@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import axiosInstance from "../../service/axiosInstance";
 
 const AddEvent = () => {
   const [categories, setCategories] = useState([]);
@@ -72,7 +73,7 @@ const AddEvent = () => {
       console.log(error);
     }
   };
-  
+
    useEffect(() => {
     getCategories();
   }, []);
