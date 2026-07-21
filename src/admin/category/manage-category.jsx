@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useNavigate  } from "react";
 import axiosInstance from "../../service/axiosInstance";
 
 const ManageCategory = () => {
+    
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   const getCategories = async () => {
     try {
@@ -63,7 +65,8 @@ const ManageCategory = () => {
                   <td>{category.categoryName}</td>
                   <td>{category.status}</td>
                   <td>
-                    <button className="btn btn-warning btn-sm me-2">
+                    <button className="btn btn-warning btn-sm me-2"
+                     onClick={() => navigate(`/edit-category/${category._id}`)}>
                       Edit
                     </button>
 
