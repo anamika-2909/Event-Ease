@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
 const AddEvent = () => {
+  const [categories, setCategories] = useState([]);
   const [event, setEvent] = useState({
     eventName: "",
     category: "",
@@ -20,12 +22,58 @@ const AddEvent = () => {
     setEvent({ ...event, image: e.target.files[0] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(event);
+    try {
+      const formData = new FormData();
 
-    alert("Event Added Successfully");
+      formData.append("eventName", event.eventName);
+      formData.append("category", event.category);
+      formData.append("location", event.location);
+      formData.append("price", event.price);
+      formData.append("description", event.description);
+      formData.append("status", event.status);
+      formData.append("image", event.image);
+
+      const res = await axiosInstance.post(
+        "/event/add-event",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      alert(res.data.message);
+
+      setEvent({
+        eventName: "",
+        category: "",
+        location: "",
+        price: "",
+        description: "",
+        status: "Active",
+        image: null,
+      });
+
+    } catch (error) {
+      console.log(error);
+      alert(error.response?.data?.message);
+    }
+  };
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const getCategories = async () => {
+    try {
+      const res = await axiosInstance.get("/category/get-category");
+      setCategories(res.data.categories);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -64,11 +112,12 @@ const AddEvent = () => {
                   onChange={handleChange}
                 >
                   <option value="">Select Category</option>
-                  <option>Wedding</option>
-                  <option>Birthday</option>
-                  <option>Corporate</option>
-                  <option>Baby Shower</option>
-                  <option>Anniversary</option>
+
+                  {categories.map((cat) => (
+                    <option key={cat._id} value={cat._id}>
+                      {cat.categoryName}
+                    </option>
+                  ))}
                 </select>
               </div>
 
