@@ -63,9 +63,6 @@ const AddEvent = () => {
       alert(error.response?.data?.message);
     }
   };
-  useEffect(() => {
-    getCategories();
-  }, []);
 
   const getCategories = async () => {
     try {
@@ -75,6 +72,10 @@ const AddEvent = () => {
       console.log(error);
     }
   };
+  
+   useEffect(() => {
+    getCategories();
+  }, []);
 
   return (
     <div className="container-fluid">
