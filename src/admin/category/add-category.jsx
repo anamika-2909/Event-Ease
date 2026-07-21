@@ -23,7 +23,7 @@ const AddCategory = () => {
 
     try {
       const res = await axiosInstance.post(
-        "/api/category/add-category",
+        "/category/add-category",
         form
       );
 
