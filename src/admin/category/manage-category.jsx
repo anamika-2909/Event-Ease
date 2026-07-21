@@ -1,4 +1,4 @@
-import { useEffect, useState,useNavigate  } from "react";
+import { useEffect, useState,useNavigate  } from "react-router-dom";
 import axiosInstance from "../../service/axiosInstance";
 
 const ManageCategory = () => {
