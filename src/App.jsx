@@ -18,6 +18,7 @@ import ManageCategory from "./admin/category/manage-category";
 import AddEvent from "./admin/Events/event-Add";
 import ManageEvent from "./admin/Events/Event-manage";
 import AddService from "./admin/Service/addservice";
+import Manageservice from "./admin/Service/manageservice";
 
 
 const App = () => {
@@ -44,7 +45,7 @@ const App = () => {
           <Route path="add-event" element={<AddEvent />} />
           <Route path="manage-event" element={<ManageEvent />} />
           <Route path="add-service" element={<AddService />} />
-          <Route path="manage-service" element={<ManageService />} />
+          <Route path="manage-service" element={<Manageservice />} />
         </Route>
 
       </Routes>

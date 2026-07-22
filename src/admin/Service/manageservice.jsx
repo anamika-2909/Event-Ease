@@ -1,10 +1,10 @@
 import React from 'react'
 
-const manageservice = () => {
+const Manageservice = () => {
   return (
    <>
    </>
   )
 }
 
-export default manageservice
+export default Manageservice
