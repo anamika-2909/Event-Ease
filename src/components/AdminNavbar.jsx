@@ -22,10 +22,10 @@ const AdminNavbar = () => {
           </span>
 
           <button
-            className="btn btn-danger w-100"
+            className="btn btn-outline-danger d-flex align-items-center"
             onClick={handleLogout}
           >
-            <FaSignOutAlt className="me-2" />
+            
             Logout
           </button>
 
