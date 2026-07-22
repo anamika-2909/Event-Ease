@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEnvelope, FaLock } from "react-icons/fa";
+import { useState } from "react";
 
 const Login = () => {
     const navigate = useNavigate();
