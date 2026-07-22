@@ -24,7 +24,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const res = await axiosInstance.post("/user/login", form);
+           const res = await axiosInstance.post("/auth/login", form);
 
             if (res.data.success) {
                 localStorage.setItem("token", res.data.token);
