@@ -1,118 +1,117 @@
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import axiosInstance from "../../service/axiosInstance";
 
 const ManageEvent = () => {
-  const events = [
-    {
-      id: 1,
-      image: "https://via.placeholder.com/60",
-      name: "Royal Wedding",
-      category: "Wedding",
-      location: "Ahmedabad",
-      price: "₹50,000",
-      status: "Active",
-    },
-    {
-      id: 2,
-      image: "https://via.placeholder.com/60",
-      name: "Birthday Bash",
-      category: "Birthday",
-      location: "Surat",
-      price: "₹15,000",
-      status: "Inactive",
-    },
-  ];
+
+  const [events, setEvents] = useState([]);
+
+  const getEvents = async () => {
+    try {
+      const res = await axiosInstance.get("/event/get-events");
+      setEvents(res.data.events);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteEvent = async (id) => {
+
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this event?"
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+
+      const res = await axiosInstance.delete(
+        `/event/delete-event/${id}`
+      );
+
+      alert(res.data.message);
+
+      getEvents();
+
+    } catch (error) {
+      console.log(error);
+      alert(error.response?.data?.message);
+    }
+
+  };
+
+  useEffect(() => {
+    getEvents();
+  }, []);
+
 
   return (
-    <div className="container-fluid">
+    <table className="table table-bordered table-hover">
 
-      <div className="card shadow-sm border-0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Image</th>
+          <th>Event</th>
+          <th>Category</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
 
-        <div className="card-header bg-success text-white d-flex justify-content-between align-items-center">
-          <h4 className="mb-0">Manage Events</h4>
+      <tbody>
 
-          <input
-            type="text"
-            className="form-control w-25"
-            placeholder="Search Event..."
-          />
-        </div>
+        {events.map((event, index) => (
 
-        <div className="card-body table-responsive">
+          <tr key={event._id}>
 
-          <table className="table table-hover align-middle">
+            <td>{index + 1}</td>
 
-            <thead className="table-dark">
-              <tr>
-                <th>#</th>
-                <th>Image</th>
-                <th>Event Name</th>
-                <th>Category</th>
-                <th>Location</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
+            <td>
+              <img
+                src={`http://localhost:5000/uploads/${event.image}`}
+                width="70"
+                height="60"
+                alt=""
+              />
+            </td>
 
-            <tbody>
+            <td>{event.eventName}</td>
 
-              {events.map((event, index) => (
-                <tr key={event.id}>
+            <td>{event.category?.categoryName}</td>
 
-                  <td>{index + 1}</td>
+            <td>{event.location}</td>
 
-                  <td>
-                    <img
-                      src={event.image}
-                      alt={event.name}
-                      width="60"
-                      height="60"
-                      className="rounded"
-                    />
-                  </td>
+            <td>₹ {event.price}</td>
 
-                  <td>{event.name}</td>
+            <td>{event.status}</td>
 
-                  <td>{event.category}</td>
+            <td>
 
-                  <td>{event.location}</td>
+              <button
+                className="btn btn-warning btn-sm me-2"
+                onClick={() => handleEdit(event)}
+              >
+                Edit
+              </button>
 
-                  <td>{event.price}</td>
+              <button
+                className="btn btn-danger btn-sm"
+                onClick={() => deleteEvent(event._id)}
+              >
+                Delete
+              </button>
 
-                  <td>
-                    <span
-                      className={`badge ${
-                        event.status === "Active"
-                          ? "bg-success"
-                          : "bg-danger"
-                      }`}
-                    >
-                      {event.status}
-                    </span>
-                  </td>
+            </td>
 
-                  <td>
-                    <button className="btn btn-warning btn-sm me-2">
-                      <FaEdit />
-                    </button>
+          </tr>
 
-                    <button className="btn btn-danger btn-sm">
-                      <FaTrash />
-                    </button>
-                  </td>
+        ))}
 
-                </tr>
-              ))}
+      </tbody>
 
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </div>
-
-    </div>
+    </table>
   );
 };
 
