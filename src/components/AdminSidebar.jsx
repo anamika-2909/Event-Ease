@@ -1,11 +1,11 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { FaHome, FaList,FaCalendarAlt,FaTools, FaUsers, FaStore, FaClipboardList, FaStar,FaCog,FaSignOutAlt,} from "react-icons/fa";
+import { FaHome, FaList, FaCalendarAlt, FaTools, FaUsers, FaStore, FaClipboardList, FaStar, FaCog, FaSignOutAlt, } from "react-icons/fa";
 
 const AdminSidebar = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login"); 
+    navigate("/login");
   };
   return (
     <div
