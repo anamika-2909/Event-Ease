@@ -29,14 +29,17 @@ const Login = () => {
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("user", JSON.stringify(res.data.user));
 
-                alert("Login Successfully");
-
-                navigate("/");
-            } else {
                 alert(res.data.message);
+
+                // Role પ્રમાણે Redirect
+                if (res.data.user.role === "admin") {
+                    navigate("/admin");
+                } else {
+                    navigate("/");
+                }
             }
-        } catch (err) {
-            alert(err.response?.data?.message || "Login Failed");
+        } catch (error) {
+            alert(error.response?.data?.message || "Login Failed");
         }
     };
     return (
@@ -92,11 +95,11 @@ const Login = () => {
                                                     </span>
                                                     <input
                                                         type="email"
-                                                        className="form-control"
-                                                        placeholder="Enter Email"
                                                         name="email"
                                                         value={form.email}
                                                         onChange={handleChange}
+                                                        className="form-control"
+                                                        placeholder="Enter Email"
                                                     />
                                                 </div>
                                             </div>
@@ -113,12 +116,12 @@ const Login = () => {
                                                     </span>
 
                                                     <input
-                                                        type="password"
-                                                        className="form-control"
-                                                        placeholder="Enter Password"
+                                                        type={showPassword ? "text" : "password"}
                                                         name="password"
                                                         value={form.password}
                                                         onChange={handleChange}
+                                                        className="form-control"
+                                                        placeholder="Enter Password"
                                                     />
 
                                                     <span
