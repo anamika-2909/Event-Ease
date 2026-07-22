@@ -243,46 +243,73 @@ useEffect(() => {
   </div>
 )}
 
-{services.map((service, index) => (
-  <tr key={service._id}>
-    <td>{index + 1}</td>
+<table className="table table-bordered table-hover">
 
-    <td>
-      <img
-        src={`http://localhost:5000/uploads/${service.image}`}
-        width="70"
-        height="60"
-        alt=""
-      />
-    </td>
+  <thead className="table-dark">
+    <tr>
+      <th>#</th>
+      <th>Image</th>
+      <th>Service Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
 
-    <td>{service.serviceName}</td>
+  <tbody>
+    {services.length > 0 ? (
+      services.map((service, index) => (
+        <tr key={service._id}>
+          <td>{index + 1}</td>
 
-    <td>{service.category?.categoryName}</td>
+          <td>
+            <img
+              src={`http://localhost:5000/uploads/${service.image}`}
+              width="70"
+              height="60"
+              alt={service.serviceName}
+            />
+          </td>
 
-    <td>₹ {service.price}</td>
+          <td>{service.serviceName}</td>
 
-    <td>{service.description}</td>
+          <td>{service.category?.categoryName}</td>
 
-    <td>{service.status}</td>
+          <td>₹ {service.price}</td>
 
-    <td>
-      <button
-        className="btn btn-warning btn-sm me-2"
-        onClick={() => handleEdit(service)}
-      >
-        Edit
-      </button>
+          <td>{service.description}</td>
 
-      <button
-        className="btn btn-danger btn-sm"
-        onClick={() => deleteService(service._id)}
-      >
-        Delete
-      </button>
-    </td>
-  </tr>
-))}
+          <td>{service.status}</td>
+
+          <td>
+            <button
+              className="btn btn-warning btn-sm me-2"
+              onClick={() => handleEdit(service)}
+            >
+              Edit
+            </button>
+
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={() => deleteService(service._id)}
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan="8" className="text-center">
+          No Services Found
+        </td>
+      </tr>
+    )}
+  </tbody>
+
+</table>
    </>
   )
 }
