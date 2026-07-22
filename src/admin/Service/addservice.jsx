@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import axiosInstance from "../../service/axiosInstance";
 
 const AddService = () => {
-    const [service, setService] = useState({
-        serviceName: "",
-        category: "",
-        price: "",
-        description: "",
-        image: null,
-        status: "Active",
-    });
+   const [categories, setCategories] = useState([]);
+
+  const [service, setService] = useState({
+    serviceName: "",
+    category: "",
+    price: "",
+    description: "",
+    image: null,
+    status: "Active",
+  });
 
     const getCategories = async () => {
         try {
