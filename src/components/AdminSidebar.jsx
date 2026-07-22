@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaHome,
   FaList,
@@ -13,6 +13,11 @@ import {
 } from "react-icons/fa";
 
 const AdminSidebar = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login"); // અથવા "/" જો login page home પર હોય
+  };
   return (
     <div
       className="bg-dark text-white vh-100 p-3"
@@ -222,7 +227,10 @@ const AdminSidebar = () => {
         </li>
 
         <li className="nav-item mt-3">
-          <button className="btn btn-danger w-100">
+          <button
+            className="btn btn-danger w-100"
+            onClick={handleLogout}
+          >
             <FaSignOutAlt className="me-2" />
             Logout
           </button>
