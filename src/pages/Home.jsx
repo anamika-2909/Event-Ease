@@ -11,14 +11,38 @@ import BecomeVendor from '../components/BecomeVendor'
 
 
 const Home = () => {
+  const [categories, setCategories] = useState([]);
+const [events, setEvents] = useState([]);
+const [services, setServices] = useState([]);
+
+const getCategories = async () => {
+  const res = await axiosInstance.get("/category/get-category");
+  setCategories(res.data.categories);
+};
+
+const getEvents = async () => {
+  const res = await axiosInstance.get("/event/get-events");
+  setEvents(res.data.events);
+};
+
+const getServices = async () => {
+  const res = await axiosInstance.get("/service/get-services");
+  setServices(res.data.services);
+};
+
+useEffect(() => {
+  getCategories();
+  getEvents();
+  getServices();
+}, []);
   return (
     <>
       <Hero />
       <SearchSection />
-      <Categories />
+      <Categories categories={categories} />
       <FeaturedVendors />
       <WhyChooseUs />
-      <Services />
+      <Services services={services} />
       <Testimonials />
       <Gallery />
       <BecomeVendor />
