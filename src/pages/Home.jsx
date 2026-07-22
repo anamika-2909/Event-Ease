@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Hero from '../components/Hero'
 import SearchSection from '../components/Searchsection'
 import Categories from '../components/Categories'
@@ -8,6 +8,7 @@ import Services from '../components/Services'
 import Testimonials from '../components/Testimonials'
 import Gallery from '../components/Gallery'
 import BecomeVendor from '../components/BecomeVendor'
+import axiosInstance from '../service/axiosInstance'
 
 
 const Home = () => {
@@ -40,7 +41,7 @@ useEffect(() => {
       <Hero />
       <SearchSection />
       <Categories categories={categories} />
-      <FeaturedVendors />
+      <FeaturedVendors events={events} />
       <WhyChooseUs />
       <Services services={services} />
       <Testimonials />

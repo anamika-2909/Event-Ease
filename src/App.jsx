@@ -9,7 +9,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
 import Servicespage from "./pages/service";
-import Event from "./pages/event";
+import Event from "./user/event";
 import Vendor from "./Vendor/vendor";
 import Dashboard from "./admin/AdminDashboard";
 import AdminLayout from "./Layout/Adminlayout";
@@ -19,6 +19,7 @@ import AddEvent from "./admin/Events/event-Add";
 import ManageEvent from "./admin/Events/Event-manage";
 import AddService from "./admin/Service/addservice";
 import Manageservice from "./admin/Service/manageservice";
+import EventDetails from "./user/Eventdetail";
 
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/Contact" element={<Contact />} />
           <Route path="/service" element={<Servicespage />} />
           <Route path="/event" element={<Event />} />
+          <Route path="/event/:id" element={<EventDetails />} />
           <Route path="/vendor" element={<Vendor />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />

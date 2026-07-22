@@ -1,92 +1,78 @@
 import {
-  FaStar,
   FaMapMarkerAlt,
   FaCheckCircle,
   FaArrowRight,
 } from "react-icons/fa";
 
-const vendors = [
-  {
-    name: "Royal Event Decor",
-    city: "Ahmedabad",
-    rating: "4.9",
-    price: "₹15,000 onwards",
-  },
-  {
-    name: "Dream Wedding Planner",
-    city: "Surat",
-    rating: "4.8",
-    price: "₹25,000 onwards",
-  },
-  {
-    name: "Birthday Magic",
-    city: "Vadodara",
-    rating: "4.7",
-    price: "₹10,000 onwards",
-  },
-];
-
-const FeaturedVendors = () => {
+const FeaturedVendors = ({ events }) => {
   return (
     <section className="py-5">
       <div className="container">
 
         <div className="text-center mb-5">
-          <h2 className="fw-bold">Featured Vendors</h2>
+          <h2 className="fw-bold">Featured Events</h2>
           <p className="text-muted">
-            Discover our top-rated event service providers.
+            Explore the latest events added by our admin.
           </p>
         </div>
 
         <div className="row g-4">
 
-          {vendors.map((vendor, index) => (
-            <div className="col-lg-4" key={index}>
+          {events.length > 0 ? (
+            events.map((event) => (
+              <div className="col-lg-4" key={event._id}>
 
-              <div className="card border-0 shadow-sm vendor-card">
+                <div className="card border-0 shadow-sm">
 
-                <div className="vendor-placeholder">
-                  Vendor Image
-                </div>
+                  <img
+                    src={`http://localhost:5000/uploads/${event.image}`}
+                    alt={event.eventName}
+                    className="card-img-top"
+                    style={{ height: "220px", objectFit: "cover" }}
+                  />
 
-                <div className="card-body">
+                  <div className="card-body">
 
-                  <h4>{vendor.name}</h4>
+                    <h4>{event.eventName}</h4>
 
-                  <div className="d-flex justify-content-between mt-3">
+                    <div className="d-flex justify-content-between mt-3">
 
-                    <span>
-                      <FaStar className="text-warning me-1" />
-                      {vendor.rating}
-                    </span>
+                      <span>
+                        <FaMapMarkerAlt className="text-danger me-1" />
+                        {event.location}
+                      </span>
 
-                    <span>
-                      <FaMapMarkerAlt className="text-danger me-1" />
-                      {vendor.city}
-                    </span>
+                      <span>
+                        {event.category?.categoryName}
+                      </span>
+
+                    </div>
+
+                    <p className="mt-3 fw-bold text-primary">
+                      ₹ {event.price}
+                    </p>
+
+                    <p className="text-success">
+                      <FaCheckCircle className="me-2" />
+                      {event.status}
+                    </p>
+
+                    <button className="btn btn-primary w-100">
+                      View Details
+                      <FaArrowRight className="ms-2" />
+                    </button>
 
                   </div>
-
-                  <p className="mt-3 fw-bold text-primary">
-                    {vendor.price}
-                  </p>
-
-                  <p className="text-success">
-                    <FaCheckCircle className="me-2" />
-                    Verified Vendor
-                  </p>
-
-                  <button className="btn btn-primary w-100">
-                    View Details
-                    <FaArrowRight className="ms-2" />
-                  </button>
 
                 </div>
 
               </div>
-
+            ))
+          ) : (
+            <div className="text-center">
+              <h5>No Events Found</h5>
             </div>
-          ))}
+          )}
 
         </div>
 
