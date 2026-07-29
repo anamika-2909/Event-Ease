@@ -112,7 +112,7 @@ const Register = () => {
                     Account Type
                   </label>
 
-                  <div className="form-check">
+                  {/* <div className="form-check">
                     <input
                       className="form-check-input"
                       type="radio"
@@ -135,6 +135,45 @@ const Register = () => {
                       type="radio"
                       name="role"
                       id="vendor"
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="vendor"
+                    >
+                      Vendor / Service Provider
+                    </label>
+                  </div> */}
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="role"
+                      id="customer"
+                      value="customer"
+                      checked={form.role === "customer"}
+                      onChange={e =>
+                        setForm({ ...form, role: e.target.value })
+                      }
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="customer"
+                    >
+                      Customer
+                    </label>
+                  </div>
+
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="role"
+                      id="vendor"
+                      value="vendor"
+                      checked={form.role === "vendor"}
+                      onChange={e =>
+                        setForm({ ...form, role: e.target.value })
+                      }
                     />
                     <label
                       className="form-check-label"
