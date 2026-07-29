@@ -3,7 +3,8 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 
-const Services = ({ services }) => {
+const Services =  ({ services = [] }) => {
+  
   return (
     <section className="py-5">
       <div className="container">

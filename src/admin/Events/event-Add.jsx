@@ -23,48 +23,84 @@ const AddEvent = () => {
     setEvent({ ...event, image: e.target.files[0] });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+    
+
+  //   try {
+  //     const formData = new FormData();
+
+  //     formData.append("eventName", event.eventName);
+  //     formData.append("category", event.category);
+  //     formData.append("location", event.location);
+  //     formData.append("price", event.price);
+  //     formData.append("description", event.description);
+  //     formData.append("status", event.status);
+  //     formData.append("image", event.image);
+
+  //     const res = await axiosInstance.post(
+  //       "/event/add-event",
+  //       formData,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       }
+  //     );
+
+  //     alert(res.data.message);
+
+  //     setEvent({
+  //       eventName: "",
+  //       category: "",
+  //       location: "",
+  //       price: "",
+  //       description: "",
+  //       status: "Active",
+  //       image: null,
+  //     });
+
+  //   } catch (error) {
+  //     console.log(error);
+  //     alert(error.response?.data?.message);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const formData = new FormData();
+  try {
+    const formData = new FormData();
 
-      formData.append("eventName", event.eventName);
-      formData.append("category", event.category);
-      formData.append("location", event.location);
-      formData.append("price", event.price);
-      formData.append("description", event.description);
-      formData.append("status", event.status);
-      formData.append("image", event.image);
+    formData.append("eventName", event.eventName);
+    formData.append("category", event.category);
+    formData.append("location", event.location);
+    formData.append("price", event.price);
+    formData.append("description", event.description);
+    formData.append("status", event.status);
+    formData.append("image", event.image);
 
-      const res = await axiosInstance.post(
-        "/event/add-event",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      alert(res.data.message);
-
-      setEvent({
-        eventName: "",
-        category: "",
-        location: "",
-        price: "",
-        description: "",
-        status: "Active",
-        image: null,
-      });
-
-    } catch (error) {
-      console.log(error);
-      alert(error.response?.data?.message);
+    // Debug
+    for (let pair of formData.entries()) {
+      console.log(pair[0], pair[1]);
     }
-  };
 
+    const res = await axiosInstance.post(
+      "/event/add-event",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    alert(res.data.message);
+
+  } catch (error) {
+    console.log(error.response?.data);
+  }
+};
   const getCategories = async () => {
     try {
       const res = await axiosInstance.get("/category/get-category");
