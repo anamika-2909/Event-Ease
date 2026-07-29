@@ -4,16 +4,16 @@ import { FaSearch } from "react-icons/fa";
 const Navbar = () => {
   const navigate = useNavigate();
 
-const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
 
-const handleLogout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
-  localStorage.removeItem("userId");
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("userId");
 
-  navigate("/");
-window.location.reload();
-};
+    navigate("/");
+    window.location.reload();
+  };
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm sticky-top py-2">
       <div className="container">
@@ -73,6 +73,11 @@ window.location.reload();
                 Contact
               </Link>
             </li>
+            <li>
+              <Link className="nav-link" to="/my-bookings">
+                My Bookings
+              </Link>
+            </li>
 
           </ul>
 
@@ -83,7 +88,7 @@ window.location.reload();
               size={18}
               style={{ cursor: "pointer" }}
             />
-{/* 
+            {/* 
             <Link
               to="/Login"
               className="btn btn-outline-primary px-4"
@@ -98,35 +103,35 @@ window.location.reload();
               Register
             </Link> */}
             {user ? (
-  <>
-    <span className="fw-semibold">
-      Hello, {user.fullName}
-    </span>
+              <>
+                <span className="fw-semibold">
+                  Hello, {user.fullName}
+                </span>
 
-    <button
-      className="btn btn-danger px-4"
-      onClick={handleLogout}
-    >
-      Logout
-    </button>
-  </>
-) : (
-  <>
-    <Link
-      to="/login"
-      className="btn btn-outline-primary px-4"
-    >
-      Login
-    </Link>
+                <button
+                  className="btn btn-danger px-4"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="btn btn-outline-primary px-4"
+                >
+                  Login
+                </Link>
 
-    <Link
-      to="/register"
-      className="btn btn-primary px-4"
-    >
-      Register
-    </Link>
-  </>
-)}
+                <Link
+                  to="/register"
+                  className="btn btn-primary px-4"
+                >
+                  Register
+                </Link>
+              </>
+            )}
 
           </div>
 

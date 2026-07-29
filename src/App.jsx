@@ -21,6 +21,7 @@ import AddService from "./admin/Service/addservice";
 import Manageservice from "./admin/Service/manageservice";
 import EventDetails from "./user/Eventdetail";
 import Booking from "./user/Booking";
+import MyBookings from "./user/MyBookings";
 
 
 
@@ -34,12 +35,13 @@ const App = () => {
           <Route path="/Contact" element={<Contact />} />
           <Route path="/service" element={<Servicespage />} />
           <Route path="/event" element={<Event />} />
-         <Route path="/Eventdetail/:id" element={<EventDetails />} />
+          <Route path="/Eventdetail/:id" element={<EventDetails />} />
           <Route path="/vendor" element={<Vendor />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
           <Route path="/booking/:id" element={<Booking />} />
+          <Route path="/my-bookings" element={<MyBookings />} /> 
         </Route>
 
         {/* Admin Layout */}
