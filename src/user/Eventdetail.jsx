@@ -1,18 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axiosInstance from "../service/axiosInstance";
 
 const EventDetails = () => {
 
-  const event = {
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1200",
-    eventName: "Royal Wedding",
-    category: "Wedding",
-    location: "Ahmedabad",
-    price: "₹50,000",
-    description:
-      "Make your special day unforgettable with our premium wedding planning services. We provide decoration, catering, photography, music, and complete event management.",
-    status: "Active",
+  const { id } = useParams();
+
+  const [event, setEvent] = useState(null);
+
+  const getEvent = async () => {
+    try {
+      const res = await axiosInstance.get(`/event/get-event/${id}`);
+      setEvent(res.data.event);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  useEffect(() => {
+    getEvent();
+  }, []);
+
+  if (!event) {
+    return (
+      <div className="container py-5 text-center">
+        <h4>Loading...</h4>
+      </div>
+    );
+  }
   return (
     <div className="container py-5">
 
@@ -24,7 +39,7 @@ const EventDetails = () => {
 
           <div className="col-lg-6">
             <img
-              src={event.image}
+              src={`http://localhost:5000/uploads/${event.image}`}
               alt={event.eventName}
               className="img-fluid w-100 h-100"
               style={{ objectFit: "cover" }}
@@ -42,9 +57,12 @@ const EventDetails = () => {
               </h2>
 
               <p>
-                <strong>Category :</strong> {event.category}
+                <strong>Category :</strong> {event.category?.categoryName}
               </p>
 
+              <p>
+                <strong>Vendor :</strong> {event.vendor?.fullName}
+              </p>
               <p>
                 <strong>Location :</strong> {event.location}
               </p>
@@ -71,9 +89,12 @@ const EventDetails = () => {
 
               <div className="mt-4">
 
-                <button className="btn btn-primary me-3">
+                <Link
+                  to={`/booking/${event._id}`}
+                  className="btn btn-primary me-3"
+                >
                   Book Now
-                </button>
+                </Link>
 
                 <Link to="/event" className="btn btn-outline-secondary">
                   Back
