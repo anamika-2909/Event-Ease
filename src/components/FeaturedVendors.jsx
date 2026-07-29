@@ -24,7 +24,7 @@ const FeaturedVendors = ({ events }) => {
               <div className="col-lg-4" key={event._id}>
 
                 <Link
-                  to={`/event-details/${event._id}`}
+                  to={`/Eventdetail/${event._id}`}
                   className="text-decoration-none text-dark">
                   <div className="card border-0 shadow-sm">
 
