@@ -3,9 +3,11 @@ import { useState } from "react";
 import axiosInstance from "../../service/axiosInstance";
 
 const AddEvent = () => {
+  const [vendors, setVendors] = useState([]);
   const [categories, setCategories] = useState([]);
   const [event, setEvent] = useState({
     eventName: "",
+    vendor: "",
     category: "",
     location: "",
     price: "",
@@ -25,7 +27,7 @@ const AddEvent = () => {
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
-    
+
 
   //   try {
   //     const formData = new FormData();
@@ -67,40 +69,41 @@ const AddEvent = () => {
   // };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const formData = new FormData();
+    try {
+      const formData = new FormData();
 
-    formData.append("eventName", event.eventName);
-    formData.append("category", event.category);
-    formData.append("location", event.location);
-    formData.append("price", event.price);
-    formData.append("description", event.description);
-    formData.append("status", event.status);
-    formData.append("image", event.image);
+      formData.append("eventName", event.eventName);
+      formData.append("category", event.category);
+      formData.append("location", event.location);
+      formData.append("price", event.price);
+      formData.append("description", event.description);
+      formData.append("status", event.status);
+      formData.append("image", event.image);
+      formData.append("vendor", event.vendor);
 
-    // Debug
-    for (let pair of formData.entries()) {
-      console.log(pair[0], pair[1]);
-    }
-
-    const res = await axiosInstance.post(
-      "/event/add-event",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      // Debug
+      for (let pair of formData.entries()) {
+        console.log(pair[0], pair[1]);
       }
-    );
 
-    alert(res.data.message);
+      const res = await axiosInstance.post(
+        "/event/add-event",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-  } catch (error) {
-    console.log(error.response?.data);
-  }
-};
+      alert(res.data.message);
+
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  };
   const getCategories = async () => {
     try {
       const res = await axiosInstance.get("/category/get-category");
@@ -110,8 +113,18 @@ const AddEvent = () => {
     }
   };
 
-   useEffect(() => {
+  const getVendors = async () => {
+    try {
+      const res = await axiosInstance.get("/vendor/get-vendors");
+      setVendors(res.data.vendors);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
     getCategories();
+    getVendors();
   }, []);
 
   return (
@@ -154,6 +167,25 @@ const AddEvent = () => {
                   {categories.map((cat) => (
                     <option key={cat._id} value={cat._id}>
                       {cat.categoryName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="col-md-6 mb-3">
+                <label className="form-label">Vendor</label>
+
+                <select
+                  className="form-select"
+                  name="vendor"
+                  value={event.vendor}
+                  onChange={handleChange}
+                >
+                  <option value="">Select Vendor</option>
+
+                  {vendors.map((vendor) => (
+                    <option key={vendor._id} value={vendor._id}>
+                      {vendor.fullName}
                     </option>
                   ))}
                 </select>
