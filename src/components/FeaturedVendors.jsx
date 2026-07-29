@@ -3,6 +3,7 @@ import {
   FaCheckCircle,
   FaArrowRight,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const FeaturedVendors = ({ events }) => {
   return (
@@ -22,7 +23,55 @@ const FeaturedVendors = ({ events }) => {
             events.map((event) => (
               <div className="col-lg-4" key={event._id}>
 
-                <div className="card border-0 shadow-sm">
+                <Link
+                  to={`/event-details/${event._id}`}
+                  className="text-decoration-none text-dark">
+                  <div className="card border-0 shadow-sm">
+
+                    <img
+                      src={`http://localhost:5000/uploads/${event.image}`}
+                      alt={event.eventName}
+                      className="card-img-top"
+                      style={{ height: "220px", objectFit: "cover" }}
+                    />
+
+                    <div className="card-body">
+
+                      <h4>{event.eventName}</h4>
+
+                      <div className="d-flex justify-content-between mt-3">
+
+                        <span>
+                          <FaMapMarkerAlt className="text-danger me-1" />
+                          {event.location}
+                        </span>
+
+                        <span>
+                          {event.category?.categoryName}
+                        </span>
+
+                      </div>
+
+                      <p className="mt-3 fw-bold text-primary">
+                        ₹ {event.price}
+                      </p>
+
+                      <p className="text-success">
+                        <FaCheckCircle className="me-2" />
+                        {event.status}
+                      </p>
+
+                      <button className="btn btn-primary w-100">
+                        View Details
+                        <FaArrowRight className="ms-2" />
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                </Link>
+                {/* <div className="card border-0 shadow-sm">
 
                   <img
                     src={`http://localhost:5000/uploads/${event.image}`}
@@ -64,7 +113,7 @@ const FeaturedVendors = ({ events }) => {
 
                   </div>
 
-                </div>
+                </div> */}
 
               </div>
             ))
