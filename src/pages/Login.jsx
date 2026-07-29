@@ -24,11 +24,12 @@ const Login = () => {
         e.preventDefault();
 
         try {
-           const res = await axiosInstance.post("/auth/login", form);
+            const res = await axiosInstance.post("/auth/login", form);
 
             if (res.data.success) {
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("user", JSON.stringify(res.data.user));
+                localStorage.setItem("userId", res.data.user._id);
 
                 alert(res.data.message);
 

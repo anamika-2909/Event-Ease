@@ -20,6 +20,8 @@ import ManageEvent from "./admin/Events/Event-manage";
 import AddService from "./admin/Service/addservice";
 import Manageservice from "./admin/Service/manageservice";
 import EventDetails from "./user/Eventdetail";
+import Booking from "./user/Booking";
+
 
 
 const App = () => {
@@ -37,6 +39,7 @@ const App = () => {
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
+          <Route path="/booking/:id" element={<Booking />} />
         </Route>
 
         {/* Admin Layout */}
