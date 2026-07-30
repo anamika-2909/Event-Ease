@@ -6,6 +6,26 @@ import {
 } from "react-icons/fa";
 
 const Dashboard = () => {
+    const [dashboard, setDashboard] = useState({
+        totalUsers: 0,
+        totalVendors: 0,
+        totalEvents: 0,
+        totalBookings: 0,
+        recentBookings: [],
+    });
+
+    const getDashboard = async () => {
+        try {
+            const res = await axiosInstance.get("/dashboard");
+            setDashboard(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getDashboard();
+    }, []);
     return (
         <div className="container-fluid">
 
@@ -25,7 +45,7 @@ const Dashboard = () => {
                         <div className="card-body d-flex justify-content-between align-items-center">
                             <div>
                                 <h6>Total Users</h6>
-                                <h2>150</h2>
+                                <h2>{dashboard.totalUsers}</h2>
                             </div>
 
                             <FaUsers size={40} className="text-primary" />
@@ -38,7 +58,7 @@ const Dashboard = () => {
                         <div className="card-body d-flex justify-content-between align-items-center">
                             <div>
                                 <h6>Total Vendors</h6>
-                                <h2>45</h2>
+                                <h2>{dashboard.totalVendors}</h2>
                             </div>
 
                             <FaStore size={40} className="text-success" />
@@ -51,7 +71,8 @@ const Dashboard = () => {
                         <div className="card-body d-flex justify-content-between align-items-center">
                             <div>
                                 <h6>Total Events</h6>
-                                <h2>75</h2>
+                                <h2>{dashboard.totalEvents}</h2>
+
                             </div>
 
                             <FaCalendarCheck size={40} className="text-warning" />
@@ -64,7 +85,7 @@ const Dashboard = () => {
                         <div className="card-body d-flex justify-content-between align-items-center">
                             <div>
                                 <h6>Total Bookings</h6>
-                                <h2>320</h2>
+                                <h2>{dashboard.totalBookings}</h2>
                             </div>
 
                             <FaClipboardList size={40} className="text-danger" />
@@ -100,43 +121,26 @@ const Dashboard = () => {
                         </thead>
 
                         <tbody>
-
-                            <tr>
-                                <td>1</td>
-                                <td>Anamika</td>
-                                <td>Wedding</td>
-                                <td>Royal Events</td>
-                                <td>
-                                    <span className="badge bg-success">
-                                        Confirmed
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>2</td>
-                                <td>Rahul</td>
-                                <td>Birthday</td>
-                                <td>Dream Decor</td>
-                                <td>
-                                    <span className="badge bg-warning text-dark">
-                                        Pending
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>3</td>
-                                <td>Priya</td>
-                                <td>Corporate</td>
-                                <td>Elite Planner</td>
-                                <td>
-                                    <span className="badge bg-danger">
-                                        Cancelled
-                                    </span>
-                                </td>
-                            </tr>
-
+                            {dashboard.recentBookings.map((booking, index) => (
+                                <tr key={booking._id}>
+                                    <td>{index + 1}</td>
+                                    <td>{booking.user?.fullName}</td>
+                                    <td>{booking.event?.eventName}</td>
+                                    <td>{booking.event?.vendor?.fullName}</td>
+                                    <td>
+                                        <span
+                                            className={`badge ${booking.status === "Approved"
+                                                    ? "bg-success"
+                                                    : booking.status === "Rejected"
+                                                        ? "bg-danger"
+                                                        : "bg-warning text-dark"
+                                                }`}
+                                        >
+                                            {booking.status}
+                                        </span>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
 
                     </table>
