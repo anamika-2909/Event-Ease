@@ -23,6 +23,8 @@ import EventDetails from "./user/Eventdetail";
 import Booking from "./user/Booking";
 import MyBookings from "./user/MyBookings";
 import ManageBooking from "./admin/Booking/ManageBooking";
+import VendorLayout from "./Layout/VendorLayout";
+import VendorDashboard from "./Vendor/Dashboard";
 
 
 
@@ -42,7 +44,7 @@ const App = () => {
           <Route path="/Login" element={<Login />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
           <Route path="/booking/:id" element={<Booking />} />
-          <Route path="/my-bookings" element={<MyBookings />} /> 
+          <Route path="/my-bookings" element={<MyBookings />} />
         </Route>
 
         {/* Admin Layout */}
@@ -55,6 +57,11 @@ const App = () => {
           <Route path="add-service" element={<AddService />} />
           <Route path="manage-service" element={<Manageservice />} />
           <Route path="manage-booking" element={<ManageBooking />} />
+        </Route>
+
+        {/* Vendor Layout */}
+        <Route path="/vendor" element={<VendorLayout />}>
+          <Route path="Dashboard" element={<VendorDashboard />} />
         </Route>
 
       </Routes>

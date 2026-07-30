@@ -36,6 +36,8 @@ const Login = () => {
                 // Role પ્રમાણે Redirect
                 if (res.data.user.role === "admin") {
                     navigate("/admin");
+                } else if (res.data.user.role === "vendor") {
+                    navigate("/vendor/Dashboard");
                 } else {
                     navigate("/");
                 }
