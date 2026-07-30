@@ -25,6 +25,9 @@ import MyBookings from "./user/MyBookings";
 import ManageBooking from "./admin/Booking/ManageBooking";
 import VendorLayout from "./Layout/VendorLayout";
 import VendorDashboard from "./Vendor/Dashboard";
+import MyServices from "./Vendor/MyServices";
+import MyEvents from "./Vendor/MyEvents";
+import VendorBooking from "./Vendor/VendorMyBookings";
 
 
 
@@ -62,6 +65,10 @@ const App = () => {
         {/* Vendor Layout */}
         <Route path="/vendor" element={<VendorLayout />}>
           <Route path="Dashboard" element={<VendorDashboard />} />
+          <Route path="MyEvents" element={<MyEvents />} />
+          <Route path="VendorMyBookings" element={<VendorBooking />} />
+          <Route path="MyServices" element={<MyServices />} />
+
         </Route>
 
       </Routes>

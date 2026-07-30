@@ -19,32 +19,34 @@ const VendorSidebar = () => {
       <ul className="nav flex-column">
 
         <li className="nav-item mb-2">
-          <Link className="nav-link text-white" to="/vendor-dashboard">
+          <Link className="nav-link text-white" to="/Dashboard">
             <FaTachometerAlt className="me-2" />
             Dashboard
           </Link>
         </li>
 
         <li className="nav-item mb-2">
-          <Link className="nav-link text-white" to="/vendor/events">
+          <Link className="nav-link text-white" to="/vendor/MyEvents">
             <FaCalendarAlt className="me-2" />
             My Events
           </Link>
         </li>
 
         <li className="nav-item mb-2">
-          <Link className="nav-link text-white" to="/vendor/services">
+          <Link className="nav-link text-white" to="/vendor/MyServices">
             <FaServicestack className="me-2" />
             My Services
           </Link>
         </li>
 
         <li className="nav-item mb-2">
-          <Link className="nav-link text-white" to="/vendor/bookings">
-            <FaClipboardList className="me-2" />
+          <Link className="nav-link text-white" to="/vendor/VendorMyBookings">
+           <FaClipboardList className="me-2" />
             My Bookings
           </Link>
+        
         </li>
+
 
         <li className="nav-item mb-2">
           <Link className="nav-link text-white" to="/vendor/profile">
