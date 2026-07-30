@@ -188,7 +188,7 @@ const AdminSidebar = () => {
 
         <li className="nav-item">
           <NavLink
-            to="/admin/bookings"
+            to="/admin/manage-booking"
             className="nav-link text-white"
           >
             <FaClipboardList className="me-2" />

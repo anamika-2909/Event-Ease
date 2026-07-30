@@ -22,6 +22,7 @@ import Manageservice from "./admin/Service/manageservice";
 import EventDetails from "./user/Eventdetail";
 import Booking from "./user/Booking";
 import MyBookings from "./user/MyBookings";
+import ManageBooking from "./admin/Booking/ManageBooking";
 
 
 
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="manage-event" element={<ManageEvent />} />
           <Route path="add-service" element={<AddService />} />
           <Route path="manage-service" element={<Manageservice />} />
+          <Route path="manage-booking" element={<ManageBooking />} />
         </Route>
 
       </Routes>
