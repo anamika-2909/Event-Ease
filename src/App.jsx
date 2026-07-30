@@ -28,6 +28,7 @@ import VendorDashboard from "./Vendor/Dashboard";
 import MyServices from "./Vendor/MyServices";
 import MyEvents from "./Vendor/MyEvents";
 import VendorBooking from "./Vendor/VendorMyBookings";
+import VendorProfile from "./Vendor/VendorProfile";
 
 
 
@@ -68,6 +69,7 @@ const App = () => {
           <Route path="MyEvents" element={<MyEvents />} />
           <Route path="VendorMyBookings" element={<VendorBooking />} />
           <Route path="MyServices" element={<MyServices />} />
+          <Route path="Profile" element={<VendorProfile />} />
 
         </Route>
 

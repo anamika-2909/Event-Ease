@@ -41,15 +41,16 @@ const VendorSidebar = () => {
 
         <li className="nav-item mb-2">
           <Link className="nav-link text-white" to="/vendor/VendorMyBookings">
-           <FaClipboardList className="me-2" />
+            <FaClipboardList className="me-2" />
             My Bookings
           </Link>
-        
+
         </li>
 
 
         <li className="nav-item mb-2">
-          <Link className="nav-link text-white" to="/vendor/profile">
+
+          <Link className="nav-link text-white" to="/vendor/Profile">
             <FaUser className="me-2" />
             Profile
           </Link>
