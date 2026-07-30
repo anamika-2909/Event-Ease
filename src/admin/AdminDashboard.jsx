@@ -6,6 +6,7 @@ import {
     FaCalendarCheck,
     FaClipboardList,
 } from "react-icons/fa";
+import axiosInstance from "../service/axiosInstance";
 
 const Dashboard = () => {
     const [dashboard, setDashboard] = useState({
