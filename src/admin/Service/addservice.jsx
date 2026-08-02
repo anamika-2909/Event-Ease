@@ -3,16 +3,16 @@ import { useEffect } from "react";
 import axiosInstance from "../../service/axiosInstance";
 
 const AddService = () => {
-   const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
 
-  const [service, setService] = useState({
-    serviceName: "",
-    category: "",
-    price: "",
-    description: "",
-    image: null,
-    status: "Active",
-  });
+    const [service, setService] = useState({
+        serviceName: "",
+        category: "",
+        price: "",
+        description: "",
+        image: null,
+        status: "Active",
+    });
 
     const getCategories = async () => {
         try {
@@ -33,45 +33,50 @@ const AddService = () => {
         });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-        try {
-            const formData = new FormData();
+  try {
+    const user = JSON.parse(localStorage.getItem("user"));
 
-            formData.append("serviceName", service.serviceName);
-            formData.append("category", service.category);
-            formData.append("price", service.price);
-            formData.append("description", service.description);
-            formData.append("status", service.status);
-            formData.append("image", service.image);
+    const formData = new FormData();
 
-            const res = await axiosInstance.post(
-                "/service/add-service",
-                formData,
-                {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                }
-            );
+    formData.append("serviceName", service.serviceName);
+    formData.append("category", service.category);
+    formData.append("price", service.price);
+    formData.append("description", service.description);
+    formData.append("status", service.status);
+    formData.append("image", service.image);
 
-            alert(res.data.message);
+    // Vendor ID
+    formData.append("vendor", user._id);
 
-            setService({
-                serviceName: "",
-                category: "",
-                price: "",
-                description: "",
-                image: null,
-                status: "Active",
-            });
+    const res = await axiosInstance.post(
+      "/service/add-service",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
 
-        } catch (error) {
-            console.log(error);
-            alert(error.response?.data?.message);
-        }
-    };
+    alert(res.data.message);
+
+    setService({
+      serviceName: "",
+      category: "",
+      price: "",
+      description: "",
+      image: null,
+      status: "Active",
+    });
+
+  } catch (error) {
+    console.log(error);
+    alert(error.response?.data?.message || "Something went wrong");
+  }
+};
 
     useEffect(() => {
         getCategories();
