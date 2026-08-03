@@ -168,7 +168,7 @@ const AdminSidebar = () => {
 
         <li className="nav-item mt-2">
           <NavLink
-            to="/admin/users"
+            to="/admin/user"
             className="nav-link text-white"
           >
             <FaUsers className="me-2" />
