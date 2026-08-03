@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../../service/axiosInstance";
+import axiosInstance from "../service/axiosInstance";
+
 
 const Users = () => {
   const [users, setUsers] = useState([]);
