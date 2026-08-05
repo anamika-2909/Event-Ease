@@ -19,7 +19,7 @@ const VendorSidebar = () => {
       <ul className="nav flex-column">
 
         <li className="nav-item mb-2">
-          <Link className="nav-link text-white" to="/Dashboard">
+          <Link className="nav-link text-white" to="/Vendor/Dashboard">
             <FaTachometerAlt className="me-2" />
             Dashboard
           </Link>

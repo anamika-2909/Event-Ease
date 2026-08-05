@@ -62,7 +62,7 @@ const App = () => {
           <Route path="add-service" element={<AddService />} />
           <Route path="manage-service" element={<Manageservice />} />
           <Route path="manage-booking" element={<ManageBooking />} />
-          <Route path="users" element={<Users />} />
+          <Route path="user" element={<Users />} />
         </Route>
 
         {/* Vendor Layout */}
