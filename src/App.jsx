@@ -30,6 +30,8 @@ import MyEvents from "./Vendor/MyEvents";
 import VendorBooking from "./Vendor/VendorMyBookings";
 import VendorProfile from "./Vendor/VendorProfile";
 import Users from "./admin/user";
+import Vendors from "./admin/Vendors";
+
 
 
 
@@ -63,6 +65,7 @@ const App = () => {
           <Route path="manage-service" element={<Manageservice />} />
           <Route path="manage-booking" element={<ManageBooking />} />
           <Route path="user" element={<Users />} />
+          <Route path="vendors" element={<Vendors />} />
         </Route>
 
         {/* Vendor Layout */}

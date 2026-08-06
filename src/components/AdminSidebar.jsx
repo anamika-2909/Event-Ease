@@ -1,6 +1,8 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { FaHome, FaList, FaCalendarAlt, FaTools, FaUsers, FaStore, FaClipboardList, FaStar, FaCog,
-   FaSignOutAlt, } from "react-icons/fa";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import {
+  FaHome, FaList, FaCalendarAlt, FaTools, FaUsers, FaStore, FaClipboardList, FaStar, FaCog,
+  FaSignOutAlt,
+} from "react-icons/fa";
 
 const AdminSidebar = () => {
   const navigate = useNavigate();
@@ -177,13 +179,11 @@ const AdminSidebar = () => {
         </li>
 
         <li className="nav-item">
-          <NavLink
-            to="/admin/vendors"
-            className="nav-link text-white"
-          >
+          <NavLink className="nav-link  text-white" to="/admin/vendors">
             <FaStore className="me-2" />
             Vendors
           </NavLink>
+        
         </li>
 
         <li className="nav-item">
