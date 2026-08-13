@@ -8,7 +8,10 @@ const MyEvents = () => {
 
   const getEvents = async () => {
     try {
-      const res = await axiosInstance.get(`/event/vendor/${user._id}`);
+      const res = await axiosInstance.get(
+        `/event/get-vendor-events/${user._id}`
+      );
+
       setEvents(res.data.events);
     } catch (error) {
       console.log(error);

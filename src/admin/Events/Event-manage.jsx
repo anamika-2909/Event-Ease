@@ -42,14 +42,14 @@ const ManageEvent = () => {
 
   const getEvents = async () => {
     try {
-      const res = await axiosInstance.get("/event/get-events");
+      const res = await axiosInstance.get("/event/admin-events");
       setEvents(res.data.events);
     } catch (error) {
       console.log(error);
     }
   };
 
- 
+
   const handleEdit = (event) => {
     setEditId(event._id);
 
@@ -119,7 +119,7 @@ const ManageEvent = () => {
   };
 
 
-   const deleteEvent = async (id) => {
+  const deleteEvent = async (id) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this event?"
     );
@@ -140,7 +140,23 @@ const ManageEvent = () => {
     }
   };
 
-   useEffect(() => {
+  const updateEventStatus = async (id, status) => {
+    try {
+      const res = await axiosInstance.put(
+        `/event/update-event-status/${id}`,
+        { status }
+      );
+
+      alert(res.data.message);
+
+      getEvents();
+    } catch (error) {
+      console.log(error);
+      alert(error.response?.data?.message);
+    }
+  };
+
+  useEffect(() => {
     getEvents();
     getCategories();
   }, []);
