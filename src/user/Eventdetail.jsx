@@ -7,6 +7,12 @@ const EventDetails = () => {
   const { id } = useParams();
 
   const [event, setEvent] = useState(null);
+  const [reviews, setReviews] = useState([]);
+
+  const [review, setReview] = useState({
+    rating: 5,
+    comment: "",
+  });
 
   const getEvent = async () => {
     try {
@@ -17,8 +23,43 @@ const EventDetails = () => {
     }
   };
 
+  const getReviews = async () => {
+  try {
+    const res = await axiosInstance.get(`/review/event/${id}`);
+    setReviews(res.data.reviews);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const submitReview = async () => {
+  try {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    await axiosInstance.post("/review/add-review", {
+      user: user._id,
+      event: id,
+      rating: review.rating,
+      comment: review.comment,
+    });
+
+    alert("Review Added Successfully");
+
+    setReview({
+      rating: 5,
+      comment: "",
+    });
+
+    getReviews();
+  } catch (error) {
+    console.log(error);
+    alert(error.response?.data?.message);
+  }
+};
+
   useEffect(() => {
     getEvent();
+    getReviews();
   }, []);
 
   if (!event) {
@@ -109,6 +150,81 @@ const EventDetails = () => {
         </div>
 
       </div>
+
+      <div className="card shadow mt-4">
+
+  <div className="card-header bg-dark text-white">
+    <h4>Reviews</h4>
+  </div>
+
+  <div className="card-body">
+
+    <div className="mb-3">
+
+      <label>Rating</label>
+
+      <select
+        className="form-select"
+        value={review.rating}
+        onChange={(e) =>
+          setReview({
+            ...review,
+            rating: e.target.value,
+          })
+        }
+      >
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+      </select>
+
+    </div>
+
+    <div className="mb-3">
+
+      <textarea
+        className="form-control"
+        rows="3"
+        placeholder="Write your review..."
+        value={review.comment}
+        onChange={(e) =>
+          setReview({
+            ...review,
+            comment: e.target.value,
+          })
+        }
+      />
+
+    </div>
+
+    <button
+      className="btn btn-success"
+      onClick={submitReview}
+    >
+      Submit Review
+    </button>
+
+    <hr />
+
+    {reviews.map((item) => (
+
+      <div key={item._id} className="border rounded p-3 mb-3">
+
+        <h6>{item.user?.fullName}</h6>
+
+        <p>⭐ {item.rating}/5</p>
+
+        <p>{item.comment}</p>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</div>
 
     </div>
   );

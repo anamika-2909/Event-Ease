@@ -31,6 +31,8 @@ import VendorBooking from "./Vendor/VendorMyBookings";
 import VendorProfile from "./Vendor/VendorProfile";
 import Users from "./admin/user";
 import Vendors from "./admin/Vendors";
+import Reviews from "./admin/Reviews";
+
 
 
 
@@ -66,6 +68,7 @@ const App = () => {
           <Route path="manage-booking" element={<ManageBooking />} />
           <Route path="user" element={<Users />} />
           <Route path="vendors" element={<Vendors />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
 
         {/* Vendor Layout */}
