@@ -32,6 +32,7 @@ import VendorProfile from "./Vendor/VendorProfile";
 import Users from "./admin/user";
 import Vendors from "./admin/Vendors";
 import Reviews from "./admin/Reviews";
+import AddEventVendor from "./Vendor/AddEvent";
 
 
 
@@ -78,6 +79,7 @@ const App = () => {
           <Route path="VendorMyBookings" element={<VendorBooking />} />
           <Route path="MyServices" element={<MyServices />} />
           <Route path="Profile" element={<VendorProfile />} />
+          <Route path="AddEvent" element={<AddEventVendor />} />
 
         </Route>
 

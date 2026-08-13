@@ -46,6 +46,11 @@ const VendorSidebar = () => {
           </Link>
 
         </li>
+        <li>
+          <Link to="/vendor/AddEvent" className="nav-link text-white">
+            Add Event
+          </Link>
+        </li>
 
 
         <li className="nav-item mb-2">
