@@ -247,8 +247,9 @@ const ManageEvent = () => {
                     value={form.status}
                     onChange={handleChange}
                   >
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
                   </select>
                 </div>
 
@@ -348,6 +349,29 @@ const ManageEvent = () => {
                     <td>{event.status}</td>
 
                     <td>
+
+                      {event.status === "Pending" && (
+                        <>
+                          <button
+                            className="btn btn-success btn-sm me-2"
+                            onClick={() =>
+                              updateEventStatus(event._id, "Approved")
+                            }
+                          >
+                            Approve
+                          </button>
+
+                          <button
+                            className="btn btn-danger btn-sm me-2"
+                            onClick={() =>
+                              updateEventStatus(event._id, "Rejected")
+                            }
+                          >
+                            Reject
+                          </button>
+                        </>
+                      )}
+
                       <button
                         className="btn btn-warning btn-sm me-2"
                         onClick={() => handleEdit(event)}
@@ -361,6 +385,7 @@ const ManageEvent = () => {
                       >
                         Delete
                       </button>
+
                     </td>
 
                   </tr>
